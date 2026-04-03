@@ -3,9 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>default</LangVersion>
-    <!-- SYSLIB0003: SecurityPermissionAttribute is a CAS no-op in .NET 8 — suppress across all files -->
+    <!-- SYSLIB0003: SecurityPermissionAttribute — CAS is a no-op in .NET 8 -->
+    <!-- SYSLIB0004: ReliabilityContractAttribute — CER is not supported in .NET 8 -->
+    <!-- SYSLIB0050/0051: Legacy BinaryFormatter/GetObjectData serialization APIs -->
+    <!-- CS0672: GetObjectData overrides obsolete base — serialization pattern, not a real issue -->
     <!-- CS8981: berval/ldapcontrol are P/Invoke interop struct names that must match C names exactly -->
-    <NoWarn>$(NoWarn);SYSLIB0003;CS8981</NoWarn>
+    <NoWarn>$(NoWarn);SYSLIB0003;SYSLIB0004;SYSLIB0050;SYSLIB0051;CS0672;CS8981</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

@@ -221,6 +221,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                 {
                     sb.AppendLine($"[WARNING] {warning}");
                 }
+
                 sb.AppendLine();
             }
 
@@ -234,12 +235,14 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                 {
                     sb.AppendLine("2. VERIFY: Unmapped custom settings. See _unmappedXmlSettings.");
                 }
+
                 sb.AppendLine("3. TEST: Run PingCastle.exe to verify all features work");
                 sb.AppendLine("4. BACKUP: Archive files (.bak) are preserved for recovery if needed");
                 if (XmlRenamedToBackup)
                 {
                     sb.AppendLine("   - Original XML backed up as: PingCastle.exe.config.bak");
                 }
+
                 if (BackupCreated)
                 {
                     sb.AppendLine("   - JSON backup available as: appsettings.console.json.bak");
@@ -251,6 +254,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                 sb.AppendLine("2. REVIEW: Original configuration files remain unchanged");
                 sb.AppendLine("3. RETRY: Fix issue and try again, or contact support");
             }
+
             sb.AppendLine();
 
             // Only include recovery instructions for actual conversions, not dry-runs

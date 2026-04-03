@@ -1,4 +1,5 @@
-﻿//
+﻿#nullable enable
+//
 // Copyright (c) Vincent LE TOUX for Ping Castle. All rights reserved.
 // https://www.pingcastle.com
 //

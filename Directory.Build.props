@@ -15,10 +15,7 @@
     <Product>PingCastle</Product>
     <Copyright></Copyright>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <!-- SA1633: No files in this repo use XML file headers -->
+    <NoWarn>$(NoWarn);SA1633</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <!-- Wire up the shared StyleCop settings file for all projects -->
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" />
-  </ItemGroup>
 </Project>

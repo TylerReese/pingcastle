@@ -1,4 +1,5 @@
-﻿namespace PingCastle
+﻿#nullable enable
+namespace PingCastle
 {
     using System;
     using System.Collections.Generic;

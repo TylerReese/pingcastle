@@ -21,7 +21,7 @@ public class Smb2ProtocolTest
         _sspiHelperFactory = sspiHelperFactory;
     }
 
-    public bool DoesServerSupportDialectWithSmbV2(string server, int dialect, out SMBSecurityModeEnum securityMode, string logPrefix = null)
+    public bool DoesServerSupportDialectWithSmbV2(string server, int dialect, out SMBSecurityModeEnum securityMode, string? logPrefix = null)
     {
         Trace.WriteLine(logPrefix + "Checking " + server + " for SMBV2 dialect 0x" + dialect.ToString("X2"));
         securityMode = SMBSecurityModeEnum.NotTested;
@@ -97,7 +97,7 @@ public class Smb2ProtocolTest
         }
     }
 
-    public List<NetworkInfo> GetFCTL_QUERY_NETWORK_INFO(string server, NetworkCredential credential = null)
+    public List<NetworkInfo> GetFCTL_QUERY_NETWORK_INFO(string server, NetworkCredential? credential = null)
     {
         Trace.WriteLine("Checking " + server + " for GetFCTL_QUERY_NETWORK_INFO");
         TcpClient client = new TcpClient();
