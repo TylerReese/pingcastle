@@ -1,0 +1,61 @@
+name: CodeQL
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+  schedule:
+    # Weekly scan every Sunday at 03:00 UTC — catches new CVEs against unchanged code
+    - cron: "0 3 * * 0"
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: windows-latest
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # C# — the main application
+          - language: csharp
+            build-mode: manual
+          # JavaScript — the vendored report front-end (jQuery, Bootstrap, Vis.js, custom JS)
+          - language: javascript-typescript
+            build-mode: none
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        if: matrix.language == 'csharp'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.x"
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+          # Use the security-extended query suite — covers OWASP Top 10 and more.
+          # Important for PingCastle since it handles AD data that can contain
+          # adversarial input (LDAP injection, XSS in report output, etc.)
+          queries: security-extended
+
+      - name: Build (C# only)
+        if: matrix.language == 'csharp'
+        shell: cmd
+        run: dotnet build PingCastle/PingCastle.csproj --configuration Release --no-restore
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"

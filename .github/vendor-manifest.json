@@ -1,0 +1,73 @@
+{
+  "_comment": "Tracks vendored frontend libraries committed to PingCastleCommon/Template/. These are minified files embedded as GZip resources in the .NET assembly — they cannot be tracked by Dependabot. Review and update manually when upgrading. Check release pages and CDN changelogs for each library.",
+  "libraries": [
+    {
+      "name": "jQuery",
+      "current_version": "3.3.1",
+      "file": "PingCastleCommon/Template/jquery.min.js",
+      "release_page": "https://github.com/jquery/jquery/releases",
+      "cdn": "https://code.jquery.com/jquery-{version}.min.js",
+      "notes": "3.3.1 has known XSS CVEs (CVE-2019-11358, CVE-2020-11022, CVE-2020-11023). Upgrade to 3.7.x. API is backwards-compatible within 3.x."
+    },
+    {
+      "name": "Bootstrap",
+      "current_version": "5.1.3",
+      "files": [
+        "PingCastleCommon/Template/bootstrap.min.js",
+        "PingCastleCommon/Template/bootstrap.min.css"
+      ],
+      "release_page": "https://github.com/twbs/bootstrap/releases",
+      "cdn": "https://cdn.jsdelivr.net/npm/bootstrap@{version}/dist/",
+      "notes": "Must be upgraded alongside Popper.js. Latest stable: 5.3.x."
+    },
+    {
+      "name": "Popper.js",
+      "current_version": "2.11.5",
+      "file": "PingCastleCommon/Template/popper.min.js",
+      "release_page": "https://github.com/floating-ui/floating-ui/releases",
+      "cdn": "https://cdn.jsdelivr.net/npm/@popperjs/core@{version}/dist/umd/popper.min.js",
+      "notes": "Required by Bootstrap 5. Must be kept aligned with Bootstrap version."
+    },
+    {
+      "name": "Bootstrap Table",
+      "current_version": "1.19.1",
+      "files": [
+        "PingCastleCommon/Template/bootstrap-table.min.js",
+        "PingCastleCommon/Template/bootstrap-table.min.css",
+        "PingCastleCommon/Template/bootstrap-table-export.min.js"
+      ],
+      "release_page": "https://github.com/wenzhixin/bootstrap-table/releases",
+      "cdn": "https://cdn.jsdelivr.net/npm/bootstrap-table@{version}/dist/",
+      "notes": "bootstrap-table-export must match bootstrap-table version exactly."
+    },
+    {
+      "name": "tableExport.jquery.plugin",
+      "current_version": "1.33.0",
+      "file": "PingCastleCommon/Template/tableExport.min.js",
+      "release_page": "https://github.com/hhurz/tableExport.jquery.plugin/releases",
+      "cdn": "https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@{version}/tableExport.min.js",
+      "notes": "Used as the export backend for Bootstrap Table export plugin."
+    },
+    {
+      "name": "Font Awesome",
+      "current_version": "6.0.0",
+      "file": "PingCastleCommon/Template/fontawesome.all.min.css",
+      "release_page": "https://github.com/FortAwesome/Font-Awesome/releases",
+      "cdn": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{version}/css/all.min.css",
+      "notes": "CSS icon library. Drop-in upgrade within 6.x. Latest: 6.7.x."
+    },
+    {
+      "name": "vis.js",
+      "current_version": "4.21.0",
+      "files": [
+        "PingCastleCommon/Template/vis.min.js",
+        "PingCastleCommon/Template/vis.min.css"
+      ],
+      "release_page": "https://github.com/almende/vis/releases",
+      "successor": "https://github.com/visjs/vis-network",
+      "notes": "ABANDONED — last release 2017. The project split into vis-network, vis-timeline, vis-data. PingCastle uses the Network graph component. Migration to vis-network 9.x requires rewriting ReportCompromiseGraph.js. Deferred — tracked separately."
+    }
+  ],
+  "last_reviewed": "2026-04-02",
+  "review_cadence": "Check on each release or at minimum quarterly"
+}

@@ -1231,7 +1231,7 @@ If you are an auditor, you MUST purchase an Auditor license to share the develop
                             Add("<td class='text'>");
                             AddEncoded(ti.TenantInfo.Name);
                             AddBeginTooltip(true, true);
-                            Add("<div class='text-left'>Domain: ");
+                            Add("<div class='text-start'>Domain: ");
                             AddEncoded(ti.TopDomain.Domain);
                             Add("</div>");
                             AddEndTooltip();
@@ -1307,7 +1307,7 @@ If you are an auditor, you MUST purchase an Auditor license to share the develop
                         AddEncoded(domain.TenantInfo.Name);
                         Add("</a>");
                         AddBeginTooltip(true, true);
-                        Add("<div class='text-left'>Domain with most users: ");
+                        Add("<div class='text-start'>Domain with most users: ");
                         AddEncoded(domain.TopDomain.Domain);
                         Add("</div>");
                         AddEndTooltip();
@@ -1844,7 +1844,7 @@ If you are an auditor, you MUST purchase an Auditor license to share the develop
                         AddEncoded(domain.TenantInfo.Name);
                         Add("</a>");
                         AddBeginTooltip(true, true);
-                        Add("<div class='text-left'>Domain with most users: ");
+                        Add("<div class='text-start'>Domain with most users: ");
                         AddEncoded(domain.TopDomain.Domain);
                         Add("</div>");
                         AddEndTooltip();

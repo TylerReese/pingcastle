@@ -10,7 +10,7 @@ function cartocp(data, id) {
     var hierarchical = false;
 
     function getTooltipHtml(d) {
-        var output = '<span class="font-weight-bold">' + d.shortName + '</span>';
+        var output = '<span class="fw-bold">' + d.shortName + '</span>';
         output += '<br/>' + d.name;
         if (d.type != null)
             output += '<br/>type: ' + d.type;
@@ -67,7 +67,7 @@ function cartocp(data, id) {
             relationDescription = getData('RelationTypeDescription');
         }
         l.rels.forEach(function (item) {
-            title += '<span class="text-uppercase font-weight-bold">' + item + '</span><br>';
+            title += '<span class="text-uppercase fw-bold">' + item + '</span><br>';
             if (relationDescription[item] !== undefined) {
                 title += relationDescription[item] + '<br>';
             }

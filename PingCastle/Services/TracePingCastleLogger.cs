@@ -5,7 +5,6 @@ using System.Diagnostics;
 namespace PingCastle.Services
 {
     using Microsoft.Extensions.Logging;
-    using Microsoft.Graph.Beta.Education.Classes.Item.Assignments.Item.Submissions.Item.Return;
 
     /// <summary>
     /// Windows-specific logger implementation using System.Diagnostics.Trace.

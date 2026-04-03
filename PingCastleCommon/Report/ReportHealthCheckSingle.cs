@@ -2476,19 +2476,19 @@ If you are an auditor, you MUST purchase an Auditor license to share the develop
 					<i class=""legend_gpo"">x</i> GPO<br>
 					<i class=""legend_unknown""></i> Other<br>
 					Settings: <br>
-					<div class=""custom-control custom-switch"">
-						<input type=""checkbox"" class=""custom-control-input"" checked id=""switch-1-");
+					<div class=""form-check form-switch"">
+						<input type=""checkbox"" class=""form-check-input"" checked id=""switch-1-");
             Add(GenerateModalId(Report.ControlPaths.Data[i].Description));
             Add(@""">
-						<label class=""custom-control-label""  for=""switch-1-");
+						<label class=""form-check-label""  for=""switch-1-");
             Add(GenerateModalId(Report.ControlPaths.Data[i].Description));
             Add(@""">Compact display</label>
 					</div>
-					<div class=""custom-control custom-switch"">
-						<input type=""checkbox"" class=""custom-control-input"" checked id=""switch-2-");
+					<div class=""form-check form-switch"">
+						<input type=""checkbox"" class=""form-check-input"" checked id=""switch-2-");
             Add(GenerateModalId(Report.ControlPaths.Data[i].Description));
             Add(@""">
-						<label class=""custom-control-label""  for=""switch-2-");
+						<label class=""form-check-label""  for=""switch-2-");
             Add(GenerateModalId(Report.ControlPaths.Data[i].Description));
             Add(@""">Hierarchical view</label>
 					</div>

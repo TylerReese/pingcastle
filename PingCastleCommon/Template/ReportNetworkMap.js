@@ -323,7 +323,7 @@ function initFilter() {
     fqdnFilter.sort();
     $('#accordionFilter').empty();
     for (var i = 0; i < fqdnFilter.length; i++) {
-        $('#accordionFilter').append('<div class="row"><div class="col-lg-12"><div class="custom-control custom-switch"><input value="1" id="filter' + i + '" class="custom-control-input" type="checkbox" checked="checked" filter-source="' + fqdnFilter[i] + '"><label class="custom-control-label" for="filter' + i + '">Enable source: ' + fqdnFilter[i] + '</label></div></div></div>');
+        $('#accordionFilter').append('<div class="row"><div class="col-lg-12"><div class="form-check form-switch"><input value="1" id="filter' + i + '" class="form-check-input" type="checkbox" checked="checked" filter-source="' + fqdnFilter[i] + '"><label class="form-check-label" for="filter' + i + '">Enable source: ' + fqdnFilter[i] + '</label></div></div></div>');
 
         $('#filter' + i).change(function () {
             // this will contain a reference to the checkbox   

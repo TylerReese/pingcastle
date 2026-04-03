@@ -1,0 +1,58 @@
+version: 2
+updates:
+  # NuGet — .NET packages
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 20
+    labels:
+      - "dependencies"
+      - "nuget"
+    groups:
+      microsoft-extensions:
+        patterns:
+          - "Microsoft.Extensions.*"
+          - "Microsoft.Bcl.*"
+      microsoft-identity:
+        patterns:
+          - "Microsoft.IdentityModel.*"
+          - "System.IdentityModel.*"
+      microsoft-kiota:
+        patterns:
+          - "Microsoft.Kiota.*"
+      microsoft-graph:
+        patterns:
+          - "Microsoft.Graph.*"
+      azure:
+        patterns:
+          - "Azure.*"
+          - "System.ClientModel"
+      wcf:
+        patterns:
+          - "System.ServiceModel.*"
+      system-packages:
+        patterns:
+          - "System.*"
+      utilities:
+        patterns:
+          - "HtmlAgilityPack"
+          - "Newtonsoft.Json"
+          - "Std.UriTemplate"
+          - "StyleCop.Analyzers"
+
+  # GitHub Actions — keep workflow action versions current
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "github-actions"
+    groups:
+      github-actions:
+        patterns:
+          - "*"

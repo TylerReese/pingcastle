@@ -675,7 +675,7 @@ public abstract class ReportBase
 		</button>
 
 		<div class=""collapse navbar-collapse"" id=""navbarToggler"">
-			<ul class=""navbar-nav mr-auto"">
+			<ul class=""navbar-nav me-auto"">
 				<li class=""nav-item active"">
 					<a class=""nav-link p-3"" href=""#"" role=""button"">
 ");

@@ -58,7 +58,7 @@ namespace PingCastle.Report
 
         protected override void Hook(StringBuilder sbHtml)
         {
-            sbHtml.Replace("<body>", @"<body data-spy=""scroll"" data-bs-target="".navbar"" data-offset=""50"">");
+            sbHtml.Replace("<body>", @"<body data-bs-spy=""scroll"" data-bs-target="".navbar"" data-bs-offset=""50"">");
         }
 
         protected override void GenerateBodyInformation()

@@ -316,7 +316,7 @@ Each square represent a network. It can be used to detect non occupied space or 
 	</div>
 </div>
 <div class=""row""><div class=""col-lg-12"">
-	<div class=""float-left"">
+	<div class=""float-start"">
 		<h2>Viewing network <span id='view-name'></span></h2>
 		<p>Scale: 1 pixel is <span id='view-scale'></span> ip(s)</p>
 	</div>
