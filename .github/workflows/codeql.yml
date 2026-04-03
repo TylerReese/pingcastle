@@ -50,6 +50,11 @@ jobs:
           # adversarial input (LDAP injection, XSS in report output, etc.)
           queries: security-extended
 
+      - name: Restore NuGet packages (C# only)
+        if: matrix.language == 'csharp'
+        shell: cmd
+        run: dotnet restore PingCastle/PingCastle.csproj
+
       - name: Build (C# only)
         if: matrix.language == 'csharp'
         shell: cmd
