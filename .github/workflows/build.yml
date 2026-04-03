@@ -48,6 +48,8 @@ jobs:
           --no-restore
           --output ./artifacts
           -p:FileVersion=${{ steps.version.outputs.FILE_VERSION }}
+          -p:DebugType=None
+          -p:DebugSymbols=false
 
       - name: Publish PingCastleAutoUpdater
         run: >
@@ -56,6 +58,8 @@ jobs:
           --no-restore
           --output ./artifacts
           -p:FileVersion=${{ steps.version.outputs.FILE_VERSION }}
+          -p:DebugType=None
+          -p:DebugSymbols=false
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
