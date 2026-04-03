@@ -71,7 +71,7 @@ namespace PingCastle.Rules
                         continue;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Trace.WriteLine($"Dependency Injection failed for {type.Name}");
                 }

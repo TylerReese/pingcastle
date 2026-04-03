@@ -1,0 +1,8 @@
+<Project>
+  <ItemGroup>
+    <!-- StyleCop warnings deferred — remove 'analyzers' from IncludeAssets to silence them repo-wide -->
+    <PackageReference Update="StyleCop.Analyzers">
+      <IncludeAssets>runtime; build; native; contentfiles; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

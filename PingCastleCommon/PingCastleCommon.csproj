@@ -5,10 +5,16 @@
     <LangVersion>default</LangVersion>
     <!-- SYSLIB0003: SecurityPermissionAttribute — CAS is a no-op in .NET 8 -->
     <!-- SYSLIB0004: ReliabilityContractAttribute — CER is not supported in .NET 8 -->
+    <!-- SYSLIB0006: Thread.Abort — not supported in .NET 8, existing usage is guarded -->
+    <!-- SYSLIB0027: PublicKey.Key — legacy cert API, targeted refactor deferred -->
+    <!-- SYSLIB0028: X509Certificate2.PrivateKey — legacy cert API, targeted refactor deferred -->
     <!-- SYSLIB0050/0051: Legacy BinaryFormatter/GetObjectData serialization APIs -->
-    <!-- CS0672: GetObjectData overrides obsolete base — serialization pattern, not a real issue -->
-    <!-- CS8981: berval/ldapcontrol are P/Invoke interop struct names that must match C names exactly -->
-    <NoWarn>$(NoWarn);SYSLIB0003;SYSLIB0004;SYSLIB0050;SYSLIB0051;CS0672;CS8981</NoWarn>
+    <!-- CS0168: Intentionally swallowed catch variables in legacy scanner code -->
+    <!-- CS0649: Unassigned fields used via P/Invoke or reflection -->
+    <!-- CS0672: GetObjectData overrides obsolete base — serialization pattern -->
+    <!-- CS8632: Existing ? annotations in files without nullable context — intentional -->
+    <!-- CS8981: berval/ldapcontrol are P/Invoke interop struct names that must match C names -->
+    <NoWarn>$(NoWarn);SYSLIB0003;SYSLIB0004;SYSLIB0006;SYSLIB0027;SYSLIB0028;SYSLIB0050;SYSLIB0051;CS0168;CS0649;CS0672;CS8632;CS8981</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

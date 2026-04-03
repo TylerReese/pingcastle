@@ -97,7 +97,7 @@ public class Smb2ProtocolTest
         }
     }
 
-    public List<NetworkInfo> GetFCTL_QUERY_NETWORK_INFO(string server, NetworkCredential? credential = null)
+    public List<NetworkInfo>? GetFCTL_QUERY_NETWORK_INFO(string server, NetworkCredential? credential = null)
     {
         Trace.WriteLine("Checking " + server + " for GetFCTL_QUERY_NETWORK_INFO");
         TcpClient client = new TcpClient();
