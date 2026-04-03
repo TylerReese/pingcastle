@@ -29,7 +29,8 @@
 
   <!-- Release Configuration -->
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
@@ -176,6 +177,9 @@
   <ItemGroup>
     <None Update="appsettings.console.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+    <None Update="license.rtf">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
