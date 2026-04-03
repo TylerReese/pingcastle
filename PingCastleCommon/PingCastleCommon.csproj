@@ -2,9 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-	<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-	<LangVersion>default</LangVersion>
-	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -76,10 +74,6 @@
     <PackageReference Include="System.IO.Packaging" Version="8.0.1" />
     <PackageReference Include="System.ServiceModel.Http" Version="8.1.2" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="8.1.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\CommonFiles\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>

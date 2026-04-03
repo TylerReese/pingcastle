@@ -29,9 +29,11 @@ jobs:
         id: version
         shell: pwsh
         run: |
-          $version = (Select-String -Path CommonFiles/CommonAssemblyInfo.cs -Pattern 'AssemblyVersion\("([^"]+)"\)').Matches[0].Groups[1].Value
+          $version = ([xml](Get-Content Directory.Build.props)).Project.PropertyGroup.Version
+          $buildVersion = "$version.${{ github.run_number }}"
           echo "VERSION=$version" >> $env:GITHUB_OUTPUT
-          echo "Building version $version"
+          echo "FILE_VERSION=$buildVersion" >> $env:GITHUB_OUTPUT
+          echo "Building version $buildVersion"
 
       - name: Publish PingCastle
         run: >
@@ -39,6 +41,7 @@ jobs:
           --configuration Release
           --no-restore
           --output ./artifacts
+          -p:FileVersion=${{ steps.version.outputs.FILE_VERSION }}
 
       - name: Publish PingCastleAutoUpdater
         run: >
@@ -46,6 +49,7 @@ jobs:
           --configuration Release
           --no-restore
           --output ./artifacts
+          -p:FileVersion=${{ steps.version.outputs.FILE_VERSION }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

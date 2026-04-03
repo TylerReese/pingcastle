@@ -10,8 +10,6 @@
     <AssemblyName>PingCastle</AssemblyName>
     <ApplicationIcon>pingcastle.ico</ApplicationIcon>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <NoWarn>0436</NoWarn>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
@@ -127,13 +125,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <!-- Linked CommonAssemblyInfo -->
-  <ItemGroup>
-    <Compile Include="..\CommonFiles\CommonAssemblyInfo.cs">
-      <Link>Properties\CommonAssemblyInfo.cs</Link>
-    </Compile>
   </ItemGroup>
 
   <!-- App.config and WSDL Files -->
