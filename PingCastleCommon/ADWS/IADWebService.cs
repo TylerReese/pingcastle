@@ -13,15 +13,15 @@ public interface IADWebService : IDisposable, IADConnection
     NetworkCredential Credential { get; set; }
     bool useLdap { get; }
     ADDomainInfo DomainInfo { get; }
-    IFileConnection FileConnection { get; }
-    ADDomainInfo GetDomainInfo();
+    new IFileConnection FileConnection { get; }
+    new ADDomainInfo GetDomainInfo();
     List<OUExploration> BuildOUExplorationList(string OU, int NumberOfDepthForSplit);
     void Enumerate(string distinguishedName, string filter, string[] properties, WorkOnReturnedObjectByADWS callback);
-    void Enumerate(string distinguishedName, string filter, string[] properties, WorkOnReturnedObjectByADWS callback, string scope);
+    new void Enumerate(string distinguishedName, string filter, string[] properties, WorkOnReturnedObjectByADWS callback, string scope);
     void Enumerate(Action preambleWithReentry, string distinguishedName, string filter, string[] properties, WorkOnReturnedObjectByADWS callback, string scope);
     string ConvertSIDToName(string sidstring);
-    string ConvertSIDToName(string sidstring, out string referencedDomain);
-    System.Security.Principal.SecurityIdentifier ConvertNameToSID(string nameToResolve);
-    void ThreadInitialization();
+    new string ConvertSIDToName(string sidstring, out string referencedDomain);
+    new System.Security.Principal.SecurityIdentifier ConvertNameToSID(string nameToResolve);
+    new void ThreadInitialization();
     void Dispose();
 }

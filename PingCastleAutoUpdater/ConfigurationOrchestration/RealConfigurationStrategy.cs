@@ -106,8 +106,8 @@ public class RealConfigurationStrategy : ConfigurationStrategyBase
         Console.WriteLine("Performing initial state migration...");
         Console.WriteLine();
 
-        string tempJsonBackupPath = null;
-        ConversionReport migrationReport = null;
+        string? tempJsonBackupPath = null;
+        ConversionReport? migrationReport = null;
 
         try
         {
@@ -344,10 +344,10 @@ public class RealConfigurationStrategy : ConfigurationStrategyBase
     protected override void HandleXmlConversionWithJsonMerge()
     {
         var converter = new XmlToJsonConfigConverter();
-        string tempXmlJsonPath = null;
-        ConversionReport finalReport = null;
+        string? tempXmlJsonPath = null;
+        ConversionReport? finalReport = null;
         bool success = false;
-        string errorDetails = null;
+        string? errorDetails = null;
 
         try
         {
@@ -460,7 +460,7 @@ public class RealConfigurationStrategy : ConfigurationStrategyBase
 
     protected override void HandleJsonFromUpdate()
     {
-        ConversionReport report = null;
+        ConversionReport? report = null;
         bool success = false;
 
         try
@@ -685,7 +685,7 @@ public class RealConfigurationStrategy : ConfigurationStrategyBase
         /// <summary>
         /// Helper to safely get a nested string value from JSON object.
         /// </summary>
-        private static string GetNestedString(System.Text.Json.Nodes.JsonObject obj, string level1, string level2)
+        private static string? GetNestedString(System.Text.Json.Nodes.JsonObject obj, string level1, string level2)
         {
             if (obj == null || obj[level1] == null)
             {

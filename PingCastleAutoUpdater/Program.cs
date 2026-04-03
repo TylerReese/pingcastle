@@ -212,25 +212,10 @@ namespace PingCastleAutoUpdater
         // Returns JSON string
         private static async Task<string> GetFromUrlAsync(string url)
         {
-            // GitHub forces TLS 1.2 which is not enabled by default in .net
-            System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.UserAgent = "PingCastleAutoUpdater " + version;
-            try
-            {
-                WebResponse response = await request.GetResponseAsync();
-                using (Stream responseStream = response.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.UTF8);
-                    return await reader.ReadToEndAsync();
-                }
-            }
-            catch (WebException ex)
-            {
-                HandleWebException(ex, "Network");
-                throw;
-            }
+            using var client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("PingCastleAutoUpdater " + version);
+            return await client.GetStringAsync(url);
         }
 
         private static void HandleWebException(WebException ex, string operationContext)
@@ -289,7 +274,7 @@ namespace PingCastleAutoUpdater
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine($"Version comparison failed - proceeding with update from {currentVersion} to {latestVersion}");
                 return true;
@@ -365,8 +350,8 @@ namespace PingCastleAutoUpdater
         static void ProceedReleaseInstall(string url, bool dryRun)
         {
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.UserAgent = "PingCastleAutoUpdater " + version.ToString();
+            using var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("PingCastleAutoUpdater " + version.ToString());
 
             // Initialize configuration orchestrator (declare outside try block so it's available after)
             string exePath = Environment.ProcessPath ?? AppContext.BaseDirectory;
@@ -385,8 +370,7 @@ namespace PingCastleAutoUpdater
                 // Backup existing configurations
                 BackupExistingConfigurations(pathContext, dryRun);
 
-                WebResponse response = request.GetResponse();
-                using (Stream responseStream = response.GetResponseStream())
+                using (Stream responseStream = httpClient.GetStreamAsync(url).GetAwaiter().GetResult())
                 using (var archive = new ZipArchive(responseStream, ZipArchiveMode.Read))
                 {
                     foreach (var entry in archive.Entries)
