@@ -1,0 +1,56 @@
+name: Build Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and publish artifacts
+    runs-on: windows-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.x"
+
+      - name: Restore NuGet packages
+        run: dotnet restore PingCastle/PingCastle.csproj
+
+      - name: Restore NuGet packages (AutoUpdater)
+        run: dotnet restore PingCastleAutoUpdater/PingCastleAutoUpdater.csproj
+
+      - name: Get version
+        id: version
+        shell: pwsh
+        run: |
+          $version = (Select-String -Path CommonFiles/CommonAssemblyInfo.cs -Pattern 'AssemblyVersion\("([^"]+)"\)').Matches[0].Groups[1].Value
+          echo "VERSION=$version" >> $env:GITHUB_OUTPUT
+          echo "Building version $version"
+
+      - name: Publish PingCastle
+        run: >
+          dotnet publish PingCastle/PingCastle.csproj
+          --configuration Release
+          --no-restore
+          --output ./artifacts
+
+      - name: Publish PingCastleAutoUpdater
+        run: >
+          dotnet publish PingCastleAutoUpdater/PingCastleAutoUpdater.csproj
+          --configuration Release
+          --no-restore
+          --output ./artifacts
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: PingCastle-${{ steps.version.outputs.VERSION }}
+          path: ./artifacts/
+          if-no-files-found: error
+          retention-days: 90
