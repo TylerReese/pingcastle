@@ -2,6 +2,9 @@ name: Build Release
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -54,7 +57,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: PingCastle-${{ steps.version.outputs.VERSION }}
+          name: PingCastle-${{ steps.version.outputs.FILE_VERSION }}
           path: ./artifacts/
           if-no-files-found: error
           retention-days: 90
