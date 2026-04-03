@@ -694,7 +694,7 @@ public class RealConfigurationStrategy : ConfigurationStrategyBase
 
             if (obj[level1] is System.Text.Json.Nodes.JsonObject nested && nested[level2] != null)
             {
-                return nested[level2].GetValue<string>();
+                return nested[level2]!.GetValue<string>();
             }
 
             return null;

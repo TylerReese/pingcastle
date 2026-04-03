@@ -94,6 +94,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                 {
                     sb.AppendLine($"[OK] JSON Backup Created: {System.IO.Path.GetFileName(BackupPath)}");
                 }
+
                 if (XmlRenamedToBackup)
                 {
                     sb.AppendLine($"[OK] Original XML archived as: PingCastle.exe.config.bak");
@@ -108,6 +109,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                     sb.AppendLine($"[FAILED] Exception: {Exception.GetType().Name}");
                 }
             }
+
             sb.AppendLine();
 
             if (SectionsConverted.Count > 0)
@@ -119,6 +121,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                 {
                     sb.AppendLine($"  - {section}");
                 }
+
                 sb.AppendLine();
             }
 
@@ -132,6 +135,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                     sb.AppendLine($"  {kvp.Key}");
                     sb.AppendLine($"    -> {kvp.Value}");
                 }
+
                 sb.AppendLine();
             }
 
@@ -146,6 +150,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                     sb.AppendLine($"  - {kvp.Key}");
                     sb.AppendLine($"    Value: {kvp.Value}");
                 }
+
                 sb.AppendLine();
                 sb.AppendLine("  Action: Preserved in JSON field \"_unmappedXmlSettings\"");
                 sb.AppendLine("  Note: PingCastle may not use these settings. Verify if needed.");
@@ -187,6 +192,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                     {
                         sb.AppendLine($"    [OK] {section}");
                     }
+
                     sb.AppendLine();
                 }
 
@@ -197,6 +203,7 @@ namespace PingCastleAutoUpdater.ConfigurationConversion
                     {
                         sb.AppendLine($"    -> {section}");
                     }
+
                     sb.AppendLine("    (Existing values preserved, new defaults added to configuration)");
                     sb.AppendLine();
                 }

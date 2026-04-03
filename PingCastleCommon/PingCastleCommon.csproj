@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>default</LangVersion>
+    <!-- SYSLIB0003: SecurityPermissionAttribute is a CAS no-op in .NET 8 — suppress across all files -->
+    <!-- CS8981: berval/ldapcontrol are P/Invoke interop struct names that must match C names exactly -->
+    <NoWarn>$(NoWarn);SYSLIB0003;CS8981</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

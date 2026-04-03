@@ -23,5 +23,5 @@ public interface IADWebService : IDisposable, IADConnection
     new string ConvertSIDToName(string sidstring, out string referencedDomain);
     new System.Security.Principal.SecurityIdentifier ConvertNameToSID(string nameToResolve);
     new void ThreadInitialization();
-    void Dispose();
+    new void Dispose();
 }
