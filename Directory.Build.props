@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <!-- Manually bump Major.Minor.Patch in this file before each release -->
-    <Version>3.1.0</Version>
+    <Version>3.6.0</Version>
 
     <!-- AssemblyVersion stays locked to Major to maintain binary compatibility -->
     <AssemblyVersion>3.0.0.0</AssemblyVersion>

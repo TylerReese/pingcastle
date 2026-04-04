@@ -447,8 +447,8 @@ namespace PingCastle.Healthcheck
 
             GetAzureInfo(domainInfo, adws);
 
-            Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            healthcheckData.EngineVersion = version.ToString(4);
+            var fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+            healthcheckData.EngineVersion = fvi.FileVersion;
 #if DEBUG
             healthcheckData.EngineVersion += " Beta";
 #endif

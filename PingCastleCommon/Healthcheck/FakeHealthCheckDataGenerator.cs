@@ -547,8 +547,8 @@ namespace PingCastle.Healthcheck
 
             healthcheckData.IsRecycleBinEnabled = true;
 
-            Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            healthcheckData.EngineVersion = version.ToString(4);
+            var fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+            healthcheckData.EngineVersion = fvi.FileVersion;
             healthcheckData.Level = PingCastleReportDataExportLevel.Full;
         }
 
